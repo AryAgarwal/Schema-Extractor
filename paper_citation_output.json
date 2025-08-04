@@ -37,5 +37,6 @@
   "title": "Attention is All you Need",
   "message": "If you use this software, please cite it using the metadata from this file.",
   "date-released": "2017-01-01",
+  "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf",
   "type": "software"
 }
