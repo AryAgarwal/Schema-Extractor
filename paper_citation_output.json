@@ -1,0 +1,41 @@
+{
+  "cff-version": "1.2.0",
+  "authors": [
+    {
+      "family-names": "Vaswani, Ashish",
+      "given-names": "Vaswani, Ashish"
+    },
+    {
+      "family-names": "Shazeer, Noam",
+      "given-names": "Shazeer, Noam"
+    },
+    {
+      "family-names": "Parmar, Niki",
+      "given-names": "Parmar, Niki"
+    },
+    {
+      "family-names": "Uszkoreit, Jakob",
+      "given-names": "Uszkoreit, Jakob"
+    },
+    {
+      "family-names": "Jones, Llion",
+      "given-names": "Jones, Llion"
+    },
+    {
+      "family-names": "Gomez, Aidan N",
+      "given-names": "Gomez, Aidan N"
+    },
+    {
+      "family-names": "Kaiser, \u0141ukasz",
+      "given-names": "Kaiser, \u0141ukasz"
+    },
+    {
+      "family-names": "Polosukhin, Illia",
+      "given-names": "Polosukhin, Illia"
+    }
+  ],
+  "title": "Attention is All you Need",
+  "message": "If you use this software, please cite it using the metadata from this file.",
+  "date-released": "2017-01-01",
+  "type": "software"
+}
