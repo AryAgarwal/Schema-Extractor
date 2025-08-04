@@ -1,108 +1,3 @@
-# schema_guided_extractor.py (Groq version)
-
-# import json
-# import argparse
-# import requests
-# from jsonschema import validate, ValidationError
-
-# # ------------------------ CONFIG ------------------------
-# GROQ_API_KEY = ""  # Replace with your Groq API key
-# GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-# MODEL = "llama-3.1-8b-instant"  # Groq supported model
-
-# # ------------------------ UTILITIES ------------------------
-# def load_file(path):
-#     with open(path, "r", encoding="utf-8") as f:
-#         return f.read()
-
-# def load_json(path):
-#     with open(path, "r", encoding="utf-8") as f:
-#         return json.load(f)
-
-# def validate_json(data, schema):
-#     try:
-#         validate(instance=data, schema=schema)
-#         return True, None
-#     except ValidationError as e:
-#         return False, str(e)
-
-# # ------------------------ LLM PROMPT ------------------------
-# def generate_structured_output(input_text, schema):
-#     prompt = f"""
-#     You are an intelligent AI agent. Your job is to convert unstructured text into a structured JSON format.
-#     The output JSON must strictly adhere to this schema:
-
-#     {json.dumps(schema, indent=2)}
-
-#     Here is the unstructured input:
-#     """
-#     {input_text}
-#     """
-
-#     Return only the JSON output.
-#     """
-
-#     headers = {
-#         "Authorization": f"Bearer {GROQ_API_KEY}",
-#         "Content-Type": "application/json"
-#     }
-
-#     payload = {
-#         "model": MODEL,
-#         "messages": [
-#             {"role": "user", "content": prompt}
-#         ],
-#         "temperature": 0
-#     }
-
-#     response = requests.post(GROQ_API_URL, headers=headers, json=payload)
-
-#     if response.status_code != 200:
-#         raise Exception(f"Groq API Error {response.status_code}: {response.text}")
-
-#     return response.json()["choices"][0]["message"]["content"]
-
-# # ------------------------ MAIN FUNCTION ------------------------
-# def main():
-#     parser = argparse.ArgumentParser(description="Convert unstructured text to structured JSON using a schema via Groq.")
-#     parser.add_argument("--input", required=False, help="Path to input text file")
-#     parser.add_argument("--schema", required=True, help="Path to schema JSON file")
-#     parser.add_argument("--output", required=True, help="Path to save generated output JSON")
-#     args = parser.parse_args()
-
-#     # Load input and schema
-#     # input_text = load_file(args.input)
-#     input_text = ''
-#     schema = load_json(args.schema)
-
-#     # Generate output
-#     print("\n[+] Calling Groq LLM to generate structured output...")
-#     output_raw = generate_structured_output(input_text, schema)
-
-#     try:
-#         output_json = json.loads(output_raw)
-#     except json.JSONDecodeError as e:
-#         print("[!] Error parsing model output as JSON:", str(e))
-#         print("\nRaw Output:\n", output_raw)
-#         return
-
-#     # Validate
-#     print("[+] Validating against schema...")
-#     valid, error = validate_json(output_json, schema)
-#     if valid:
-#         print("[✓] Output is valid.")
-#         with open(args.output, "w", encoding="utf-8") as f:
-#             json.dump(output_json, f, indent=2)
-#         print(f"[+] Output saved to {args.output}")
-#     else:
-#         print("[!] Output is invalid:", error)
-#         print("\nGenerated Output:\n", json.dumps(output_json, indent=2))
-
-# if __name__ == "__main__":
-#     main()
-
-
-
 
 import google.generativeai as genai
 import json
@@ -211,3 +106,108 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+# schema_guided_extractor.py (Groq version)
+
+# import json
+# import argparse
+# import requests
+# from jsonschema import validate, ValidationError
+
+# # ------------------------ CONFIG ------------------------
+# GROQ_API_KEY = ""  # Replace with your Groq API key
+# GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+# MODEL = "llama-3.1-8b-instant"  # Groq supported model
+
+# # ------------------------ UTILITIES ------------------------
+# def load_file(path):
+#     with open(path, "r", encoding="utf-8") as f:
+#         return f.read()
+
+# def load_json(path):
+#     with open(path, "r", encoding="utf-8") as f:
+#         return json.load(f)
+
+# def validate_json(data, schema):
+#     try:
+#         validate(instance=data, schema=schema)
+#         return True, None
+#     except ValidationError as e:
+#         return False, str(e)
+
+# # ------------------------ LLM PROMPT ------------------------
+# def generate_structured_output(input_text, schema):
+#     prompt = f"""
+#     You are an intelligent AI agent. Your job is to convert unstructured text into a structured JSON format.
+#     The output JSON must strictly adhere to this schema:
+
+#     {json.dumps(schema, indent=2)}
+
+#     Here is the unstructured input:
+#     """
+#     {input_text}
+#     """
+
+#     Return only the JSON output.
+#     """
+
+#     headers = {
+#         "Authorization": f"Bearer {GROQ_API_KEY}",
+#         "Content-Type": "application/json"
+#     }
+
+#     payload = {
+#         "model": MODEL,
+#         "messages": [
+#             {"role": "user", "content": prompt}
+#         ],
+#         "temperature": 0
+#     }
+
+#     response = requests.post(GROQ_API_URL, headers=headers, json=payload)
+
+#     if response.status_code != 200:
+#         raise Exception(f"Groq API Error {response.status_code}: {response.text}")
+
+#     return response.json()["choices"][0]["message"]["content"]
+
+# # ------------------------ MAIN FUNCTION ------------------------
+# def main():
+#     parser = argparse.ArgumentParser(description="Convert unstructured text to structured JSON using a schema via Groq.")
+#     parser.add_argument("--input", required=False, help="Path to input text file")
+#     parser.add_argument("--schema", required=True, help="Path to schema JSON file")
+#     parser.add_argument("--output", required=True, help="Path to save generated output JSON")
+#     args = parser.parse_args()
+
+#     # Load input and schema
+#     # input_text = load_file(args.input)
+#     input_text = ''
+#     schema = load_json(args.schema)
+
+#     # Generate output
+#     print("\n[+] Calling Groq LLM to generate structured output...")
+#     output_raw = generate_structured_output(input_text, schema)
+
+#     try:
+#         output_json = json.loads(output_raw)
+#     except json.JSONDecodeError as e:
+#         print("[!] Error parsing model output as JSON:", str(e))
+#         print("\nRaw Output:\n", output_raw)
+#         return
+
+#     # Validate
+#     print("[+] Validating against schema...")
+#     valid, error = validate_json(output_json, schema)
+#     if valid:
+#         print("[✓] Output is valid.")
+#         with open(args.output, "w", encoding="utf-8") as f:
+#             json.dump(output_json, f, indent=2)
+#         print(f"[+] Output saved to {args.output}")
+#     else:
+#         print("[!] Output is invalid:", error)
+#         print("\nGenerated Output:\n", json.dumps(output_json, indent=2))
+
+# if __name__ == "__main__":
+#     main()
